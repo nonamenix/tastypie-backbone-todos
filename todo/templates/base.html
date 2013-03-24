@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script type="text/template" id="item-template">
+        <div class="view">
+            <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+            <label><%- title %></label>
+            <a class="destroy"></a>
+        </div>
+        <input class="edit" type="text" value="<%- title %>" />
+    </script>
+
+    <script type="text/template" id="stats-template">
+        <% if (done) { %>
+        <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+        <% } %>
+        <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+    </script>
+    <script type="text/javascript" src="{{ STATIC_URL }}vendors/jquery.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}vendors/jquery.cookie.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}vendors/backbone/underscore.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}vendors/backbone/backbone.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}vendors/backbone/backbone.localStorage.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/app.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/backbone-tastypie.js"></script>
+</head>
+<body>
+
+{% block content %}{% endblock %}
+
+<div id="instructions">
+    Double-click to edit a todo.
+</div>
+
+<div id="credits">
+    Created by
+    <br />
+    <a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>.
+    <br />Rewritten by: <a href="http://addyosmani.github.com/todomvc">TodoMVC</a>.
+    <br>Django application: <a href="http://nonamenix.blogspot.com/">nonamenix</a>
+</div>
+</body>
+</html>
